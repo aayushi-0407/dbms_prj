@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Django Finance App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #34495e;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .login-button, .signup-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .login-button:hover, .signup-button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Django Finance App</h1>
+    </header>
+    <main>
+        <p>
+            Thank you for choosing our finance app! We are here to help you manage your finances efficiently.
+        </p>
+        <div class="button-container">
+            <a href="{% url 'Login' %}" class="login-button">Login</a>
+            <a href="{% url 'register' %}" class="signup-button">Sign Up</a>
+        </div>
+    </main>
+    <footer>
+        <p>
+            &copy; 2024 Django Finance App. All rights reserved.
+        </p>
+    </footer>
+    <!-- Add any additional scripts or links to JS files here -->
+</body>
+</html>

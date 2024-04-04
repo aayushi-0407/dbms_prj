@@ -1,0 +1,110 @@
+<!-- finance/templates/add_spending.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Spending - Django Finance App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+    </style>
+    <script>
+        function validateAmount() {
+            var amountInput = document.getElementById("amount");
+            var amount = parseFloat(amountInput.value);
+            var errorMessage = document.getElementById("amount-error");
+
+            if (isNaN(amount) || amount < 0) {
+                errorMessage.textContent = "Amount must be a non-negative number.";
+                return false;
+            } else {
+                errorMessage.textContent = "";
+                return true;
+            }
+        }
+
+        function validateForm() {
+            return validateAmount();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Add Spending</h1>
+    </header>
+    <main>
+        <form method="post" onsubmit="return validateForm()">
+            {% csrf_token %}
+            <label for="amount">Amount:</label>
+            <input type="number" name="amount" id="amount" required>
+            <span id="amount-error" class="error-message"></span>
+
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" required>
+
+            <button type="submit">Add Spending</button>
+        </form>
+        <a href="{% url 'welcome' %}">Back to Welcome Page</a>
+    </main>
+</body>
+</html>
